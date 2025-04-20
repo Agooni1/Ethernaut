@@ -6,108 +6,30 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   31337: {
-    CoinFlip: {
-      address: "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+    Force: {
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       abi: [
         {
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
           type: "constructor",
-        },
-        {
-          inputs: [],
-          name: "consecutiveWins",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "bool",
-              name: "_guess",
-              type: "bool",
-            },
-          ],
-          name: "flip",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-      ],
-      inheritedFunctions: {},
-    },
-    CoinFlipAttacker: {
-      address: "0x9A676e781A523b5d0C0e43731313A708CB607508",
-      abi: [
-        {
-          inputs: [],
-          stateMutability: "nonpayable",
-          type: "constructor",
-        },
-        {
-          inputs: [],
-          name: "consecutiveWins",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "flipAttack",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-          type: "function",
         },
         {
           inputs: [
             {
               internalType: "address",
-              name: "_targetaddress",
+              name: "target",
               type: "address",
             },
           ],
-          name: "setTarget",
+          name: "attack",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
         },
         {
-          inputs: [],
-          name: "targetAddress",
-          outputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
+          stateMutability: "payable",
+          type: "receive",
         },
       ],
       inheritedFunctions: {},
@@ -167,6 +89,84 @@ const deployedContracts = {
           outputs: [
             {
               internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    Force: {
+      address: "0xcfACbabb4277461aA3CFe188E595B81f9b458Fcf",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "payable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "target",
+              type: "address",
+            },
+          ],
+          name: "attack",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    TelephoneAttacker: {
+      address: "0x1a9E43aCF0d0626D0872d2728b47B779db029C59",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_newowner",
+              type: "address",
+            },
+          ],
+          name: "attacker",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_contractAddress",
+              type: "address",
+            },
+          ],
+          name: "setContract",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "targetaddress",
+          outputs: [
+            {
+              internalType: "contract ITelephone",
               name: "",
               type: "address",
             },
