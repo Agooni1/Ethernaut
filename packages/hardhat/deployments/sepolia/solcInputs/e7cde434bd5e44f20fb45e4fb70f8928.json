@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/DetectionBot2.sol": {
+      "content": "pragma solidity ^0.8.0;\ninterface IDetectionBot {\n    function handleTransaction(address user, bytes calldata msgData) external;\n}\ninterface IForta {\n    function raiseAlert(address user) external;\n}\ncontract DetectionBot2 is IDetectionBot {\n// handleTransaction is called by Forta.notify(player, msg.data)\naddress public origSender;\naddress public cryptoVault;\n    function handleTransaction(address user, bytes calldata msgData) override external {\n    // see the explanatory note preceding this code block to understand this like\n        (,,origSender) = abi.decode(msgData[4:], (address, uint256, address));\n        // If the origSender is cryptoVault contract\n        if (origSender == address(cryptoVault))  {\n        // call Forta.raiseAlert()\n            IForta(msg.sender).raiseAlert(user);\n        }\n    }\n    function setVault(address vault) public {\n        cryptoVault = vault;\n    }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

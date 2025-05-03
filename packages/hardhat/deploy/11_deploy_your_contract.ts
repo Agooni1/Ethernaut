@@ -24,10 +24,10 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   // const initsupplyDex = 100;
   // const initsupplyMe = 10;
 
-  // const DexInstance = await deploy("DexTwo", {
+  // const DexInstance = await deploy("Upgraderaddress3", {
   //   from: deployer,
   //   // Contract constructor arguments
-  //   args: ["0xdFAcd1aBC73C82Fd55edD35B933F7D9cd04E6470"],
+  //   // args: ["0x2968B0d0514c15Fc39880846EF9A3F161BabC61f"],
   //   log: true,
   //   // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
   //   // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -35,14 +35,26 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   // });
 
 
-  //   // Deploy token1
-  //   const token1Deployment = await deploy("Token1", {
-  //     contract: "SwappableTokenTwo",
+  // const GT3 = await deploy("GatekeeperThree", {
   //     from: deployer,
-  //     args: [DexInstance.address, "Token1", "TK1"],
+  //     // args: [deployer, "0x1fb24264DdaeB97f480771bE94E70e46d7CF95dd", "0xae0334ad2D77B3741bD9277db2E56351b4aA5971"],
   //     log: true,
   //     autoMine: true,
   //   });
+
+  //   await deploy("SimpleTrick", {
+  //     from: deployer,
+  //     args: [GT3.address],
+  //     log: true,
+  //     autoMine: true,
+  //   })
+
+    await deploy("GT3Attack", {
+      from: deployer,
+      args: [deployer, "0xE8F871b919840A9c3ba82408C74eCcd59A77a1D2"],
+      log: true,
+      autoMine: true,
+    })
 
 
   //   // Deploy token2
@@ -54,25 +66,6 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   //     autoMine: true,
   //   });
 
-  const dexattacker = await deploy("DexTwoAttacker", {
-    from: deployer,
-    // Contract constructor arguments
-    // args: ["0xdFAcd1aBC73C82Fd55edD35B933F7D9cd04E6470", DexInstance.address, token1Deployment.address, token2Deployment.address],
-    args: [deployer, "0x6a79bB2A6ceC5035Fb6d0b68A4A9671AA1C31671", "0x409EEc0133B731cC5f039164b32B093F73A72587", "0xe71c20Ce828Fa3E23922CEe51062b0C2a9708902"],
-    // args: ["0xdFAcd1aBC73C82Fd55edD35B933F7D9cd04E6470", "0x5FbDB2315678afecb367f032d93F642f64180aa3"],
-    log: true,
-    // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
-    // automatically mining the contract deployment transaction. There is no effect on live networks.
-    autoMine: true,
-  });
-
-  const fakeToken = await deploy("FakeToken", {
-    contract: "FakeToken",
-    from: deployer,
-    args: [dexattacker.address],
-    log: true,
-    autoMine: true,
-  });
 
     
 
@@ -86,4 +79,4 @@ export default deployYourContract;
 // Tags are useful if you have multiple deploy files and only want to run one of them.
 // e.g. yarn deploy --tags YourContract
 // deployYourContract.tags = ["GatekeeperOne"];
-deployYourContract.tags = ["Dex"];
+deployYourContract.tags = ["Motor"];

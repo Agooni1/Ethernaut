@@ -1,0 +1,121 @@
+{
+  "address": "0xBBE957BF43F0A7b9d02cBE54886C468762a184Ab",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "cryptoVault",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "msgData",
+          "type": "bytes"
+        }
+      ],
+      "name": "handleTransaction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "origSender",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "vault",
+          "type": "address"
+        }
+      ],
+      "name": "setVault",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xbf50efc1d6fd7b9b3fcd86cbdef10bac30a4e5e648340cbd802852a22df6f6d6",
+  "receipt": {
+    "to": null,
+    "from": "0xcC6eDeB501BbD8AD9E028BDe937B63Cdd64A1D91",
+    "contractAddress": "0xBBE957BF43F0A7b9d02cBE54886C468762a184Ab",
+    "transactionIndex": 150,
+    "gasUsed": "212782",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xf6270dfd66b43218720b2c613f9f32e4b1217dc7e7f8ecfa864d533870fef27d",
+    "transactionHash": "0xbf50efc1d6fd7b9b3fcd86cbdef10bac30a4e5e648340cbd802852a22df6f6d6",
+    "logs": [],
+    "blockNumber": 8231183,
+    "cumulativeGasUsed": "16266453",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "e7cde434bd5e44f20fb45e4fb70f8928",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"cryptoVault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"msgData\",\"type\":\"bytes\"}],\"name\":\"handleTransaction\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"origSender\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"vault\",\"type\":\"address\"}],\"name\":\"setVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DetectionBot2.sol\":\"DetectionBot2\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/DetectionBot2.sol\":{\"content\":\"pragma solidity ^0.8.0;\\ninterface IDetectionBot {\\n    function handleTransaction(address user, bytes calldata msgData) external;\\n}\\ninterface IForta {\\n    function raiseAlert(address user) external;\\n}\\ncontract DetectionBot2 is IDetectionBot {\\n// handleTransaction is called by Forta.notify(player, msg.data)\\naddress public origSender;\\naddress public cryptoVault;\\n    function handleTransaction(address user, bytes calldata msgData) override external {\\n    // see the explanatory note preceding this code block to understand this like\\n        (,,origSender) = abi.decode(msgData[4:], (address, uint256, address));\\n        // If the origSender is cryptoVault contract\\n        if (origSender == address(cryptoVault))  {\\n        // call Forta.raiseAlert()\\n            IForta(msg.sender).raiseAlert(user);\\n        }\\n    }\\n    function setVault(address vault) public {\\n        cryptoVault = vault;\\n    }\\n}\",\"keccak256\":\"0xfb15713965723563102999b03d32549614423e397dd4dce44f53aa1bdc6b6a04\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506102e3806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80630ac3d60914610051578063220ab6aa146100805780636817031b14610095578063d444d8a0146100c5575b600080fd5b600054610064906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b61009361008e366004610198565b6100d8565b005b6100936100a336600461021d565b600180546001600160a01b0319166001600160a01b0392909216919091179055565b600154610064906001600160a01b031681565b6100e58160048185610241565b8101906100f2919061026b565b600080546001600160a01b0319166001600160a01b039283169081179091556001549091169003915061017b90505760405163087a43c160e01b81526001600160a01b0384166004820152339063087a43c190602401600060405180830381600087803b15801561016257600080fd5b505af1158015610176573d6000803e3d6000fd5b505050505b505050565b6001600160a01b038116811461019557600080fd5b50565b6000806000604084860312156101ad57600080fd5b83356101b881610180565b9250602084013567ffffffffffffffff808211156101d557600080fd5b818601915086601f8301126101e957600080fd5b8135818111156101f857600080fd5b87602082850101111561020a57600080fd5b6020830194508093505050509250925092565b60006020828403121561022f57600080fd5b813561023a81610180565b9392505050565b6000808585111561025157600080fd5b8386111561025e57600080fd5b5050820193919092039150565b60008060006060848603121561028057600080fd5b833561028b81610180565b92506020840135915060408401356102a281610180565b80915050925092509256fea2646970667358221220495e1ae1635d4c7e81bc27f41a475683fcf2b72e784deeb6007ec91b0537bdeb64736f6c63430008140033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80630ac3d60914610051578063220ab6aa146100805780636817031b14610095578063d444d8a0146100c5575b600080fd5b600054610064906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b61009361008e366004610198565b6100d8565b005b6100936100a336600461021d565b600180546001600160a01b0319166001600160a01b0392909216919091179055565b600154610064906001600160a01b031681565b6100e58160048185610241565b8101906100f2919061026b565b600080546001600160a01b0319166001600160a01b039283169081179091556001549091169003915061017b90505760405163087a43c160e01b81526001600160a01b0384166004820152339063087a43c190602401600060405180830381600087803b15801561016257600080fd5b505af1158015610176573d6000803e3d6000fd5b505050505b505050565b6001600160a01b038116811461019557600080fd5b50565b6000806000604084860312156101ad57600080fd5b83356101b881610180565b9250602084013567ffffffffffffffff808211156101d557600080fd5b818601915086601f8301126101e957600080fd5b8135818111156101f857600080fd5b87602082850101111561020a57600080fd5b6020830194508093505050509250925092565b60006020828403121561022f57600080fd5b813561023a81610180565b9392505050565b6000808585111561025157600080fd5b8386111561025e57600080fd5b5050820193919092039150565b60008060006060848603121561028057600080fd5b833561028b81610180565b92506020840135915060408401356102a281610180565b80915050925092509256fea2646970667358221220495e1ae1635d4c7e81bc27f41a475683fcf2b72e784deeb6007ec91b0537bdeb64736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 19,
+        "contract": "contracts/DetectionBot2.sol:DetectionBot2",
+        "label": "origSender",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 21,
+        "contract": "contracts/DetectionBot2.sol:DetectionBot2",
+        "label": "cryptoVault",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}
