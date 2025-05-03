@@ -49,9 +49,10 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   //     autoMine: true,
   //   })
 
-    await deploy("GT3Attack", {
+    await deploy("StakeAttack2", {
       from: deployer,
-      args: [deployer, "0xE8F871b919840A9c3ba82408C74eCcd59A77a1D2"],
+      args: [deployer, "0x97ab138Acf1A417A11F0BcD55720107224ad09e8","0xCd8AF4A0F29cF7966C051542905F66F5dca9052f"],
+      value: "1100000000000000",
       log: true,
       autoMine: true,
     })
